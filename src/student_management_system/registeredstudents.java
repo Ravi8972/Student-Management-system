@@ -6,6 +6,7 @@ package student_management_system;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author ravim
@@ -79,6 +80,11 @@ public class registeredstudents extends javax.swing.JFrame {
         });
 
         LogOut.setText("LogOut");
+        LogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,8 +139,7 @@ public class registeredstudents extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,20 +177,26 @@ public class registeredstudents extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         try{
-            Class.forName("Com.mysql.cj.jdbc.Driver");
+            System.out.print("inside try");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/srm","root","RaviPass");
             
-              Statement st = con.createStatement();
+             Statement st = con.createStatement();
             
-            ResultSet rs = st.executeQuery("Select *from student");
-            
-            jTable1.setModel(Dbutils.resultSetTotableModel(rs));
+            ResultSet rs = st.executeQuery("select * from  student ;");
+        
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
         }
         catch(Exception e){
          JOptionPane.showMessageDialog(null,e.toString());
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_LogOutActionPerformed
 
     /**
      * @param args the command line arguments

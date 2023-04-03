@@ -163,6 +163,11 @@ public class insertresult extends javax.swing.JFrame {
         });
 
         LogOut1.setText("LogOut");
+        LogOut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOut1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -317,23 +322,34 @@ public class insertresult extends javax.swing.JFrame {
     }//GEN-LAST:event_AllStudentsResultActionPerformed
 
     private void AddNewStudent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewStudent1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: setVisible(false);
+           setVisible(false);
+        new index().setVisible(true);
     }//GEN-LAST:event_AddNewStudent1ActionPerformed
-
+ ////////////////////////////////
     private void InsertNewStudent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNewStudent1ActionPerformed
         // TODO add your handling code here:
+        
+        setVisible(false);
+        new insertresult().setVisible(true);
+        
     }//GEN-LAST:event_InsertNewStudent1ActionPerformed
 
     private void RegisteredStudents1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisteredStudents1ActionPerformed
         // TODO add your handling code here:
+         setVisible(false);
+        new registeredstudents().setVisible(true);
     }//GEN-LAST:event_RegisteredStudents1ActionPerformed
 
     private void AllStudentsResult1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllStudentsResult1ActionPerformed
         // TODO add your handling code here:
+          setVisible(false);
+        new AllStudentsResult().setVisible(true);
     }//GEN-LAST:event_AllStudentsResult1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -371,6 +387,11 @@ public class insertresult extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void LogOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOut1ActionPerformed
+        // TODO add your handling code here:
+           System.exit(0);
+    }//GEN-LAST:event_LogOut1ActionPerformed
 
     /**
      * @param args the command line arguments

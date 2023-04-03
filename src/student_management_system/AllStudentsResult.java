@@ -6,6 +6,7 @@ package student_management_system;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -83,6 +84,11 @@ public class AllStudentsResult extends javax.swing.JFrame {
         });
 
         LogOut.setText("LogOut");
+        LogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,20 +185,25 @@ public class AllStudentsResult extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
            try{
-            Class.forName("Com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/srm","root","RaviPass");
             
-              Statement st = con.createStatement();
+             Statement st = con.createStatement();
             
-            ResultSet rs = st.executeQuery("Select *from result");
-            
-            jTable1.setModel(Dbutils.resultSetTotableModel(rs));
+            ResultSet rs = st.executeQuery("select * from  result;");
+         
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
         }
         catch(Exception e){
            JOptionPane.showMessageDialog(null,e.toString());
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
+        // TODO add your handling code here: 
+        System.exit(0);
+    }//GEN-LAST:event_LogOutActionPerformed
 
     /**
      * @param args the command line arguments
